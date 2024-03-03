@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int square(int num) {
+    return num * num;
+}
+float square(float num) {
+    return num * num;
+}
+
+int main() {
+    int intNum;
+    float floatNum;
+
+    cout << "Enter an integer number: ";
+    cin >> intNum;
+    cout << "Square of " << intNum << " is: " << square(intNum) << endl;
+
+    cout << "Enter a float number: ";
+    cin >> floatNum;
+    cout << "Square of " << floatNum << " is: " << square(floatNum) << endl;
+
+    return 0;
+}
