@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class OddSum {
+private:
+    int sum;
+
+public:
+    OddSum() : sum(0) {}
+
+    void caSum() {
+        for (int i = 1; i <= 100; i += 2) {
+            sum += i;
+        }
+    }
+
+    void displaySum() {
+        cout << "Sum of odd numbers between 1 and 100 is: " << sum << endl;
+    }
+};
+
+int main() {
+    OddSum amar;
+
+    // Calculate the sum of odd numbers
+    amar.caSum();
+
+    // Display the sum
+    amar.displaySum();
+
+    return 0;
+}
