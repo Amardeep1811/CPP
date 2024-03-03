@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class LargestNumber {
+private:
+    int num1;
+    int num2;
+
+public:
+    void Numbers() {
+        cout << "Enter first number: ";
+        cin >> num1;
+        cout << "Enter second number: ";
+        cin >> num2;
+    }
+
+    int Largest() {
+        if (num1 > num2)
+            return num1;
+        else
+            return num2;
+    }
+
+    void dLargest(int largest) {
+        cout << "The largest number among " << num1 << " and " << num2 << " is: " << largest << endl;
+    }
+};
+
+int main() {
+    LargestNumber amar;
+
+
+    amar.Numbers();
+
+    int largest = amar.Largest();
+
+  amar.dLargest(largest);
+
+    return 0;
+}
