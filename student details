@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    char name[50];
+    int UID;
+    float cgpa;
+
+public:
+
+    void inputDetails() {
+        cout << "Enter name: ";
+        cin>> name;
+        cout << "Enter UID: ";
+        cin >> UID;
+        cout << "Enter CGPA: ";
+        cin >> cgpa;
+    }
+
+void displayDetails() {
+        cout << "Student details:" << endl;
+        cout << "Name: " << name << endl;
+        cout << "UID : " << UID << endl;
+        cout << "CGPA: " << cgpa << endl;
+    }
+};
+
+int main() {
+    Student student;
+
+student.inputDetails();
+
+    student.displayDetails();
+
+    return 0;
+}
+
