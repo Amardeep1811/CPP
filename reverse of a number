@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class Number {
+public:
+    int reverseNumber(int num);
+};
+int Number::reverseNumber(int num) {
+    int revNum = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        revNum = revNum * 10 + digit;
+        num /= 10;
+    }
+    return revNum;
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    Number amar;
+    int revNumber = amar.reverseNumber(n);
+
+    cout << "Reverse of " << n << " is: " << revNumber << endl;
+
+    return 0;
+}
