@@ -4,7 +4,7 @@ using namespace std;
 
 class Shape {
 public:
-    virtual double calculate_area() = 0;
+    virtual double calculate_area() = 0; // Make it pure virtual for an abstract base class.
 };
 
 class Rectangle : public Shape {
@@ -13,10 +13,19 @@ protected:
     double height;
 
 public:
-    Rectangle(double w, double h) : width(w), height(h) {}
+    Rectangle() : width(0), height(0) {}
 
-    double calculate_area() override {
+    void input() {
+        cout << "ENTER THE WIDTH: ";
+        cin >> width;
+
+        cout << "ENTER THE HEIGHT: ";
+        cin >> height;
+    }
+
+    double calculate_area() {
         return width * height;
+        
     }
 };
 
@@ -25,18 +34,25 @@ protected:
     double radius;
 
 public:
-    Circle(double r) : radius(r) {}
+    Circle() : radius(0) {}
 
-    double calculate_area() override {
+    void input() {
+        cout << "ENTER THE RADIUS: ";
+        cin >> radius;
+    }
+
+    double calculate_area() {
         return M_PI * radius * radius;
     }
 };
 
 int main() {
-    Rectangle rect(5, 4);
-    cout << "Rectangle Area: " << rect.calculate_area() << endl;
+    Rectangle react;
+    react.input();
+    cout << "Rectangle Area: " << react.calculate_area() << endl;
 
-    Circle circle(3);
+    Circle circle;
+    circle.input();
     cout << "Circle Area: " << circle.calculate_area() << endl;
 
     return 0;
