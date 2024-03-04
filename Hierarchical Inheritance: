@@ -2,12 +2,7 @@
 #include <cmath>
 using namespace std;
 
-class Shape {
-public:
-    virtual double calculate_area() = 0; // Make it pure virtual for an abstract base class.
-};
-
-class Rectangle : public Shape {
+class Rectangle {
 protected:
     double width;
     double height;
@@ -25,11 +20,10 @@ public:
 
     double calculate_area() {
         return width * height;
-        
     }
 };
 
-class Circle : public Shape {
+class Circle {
 protected:
     double radius;
 
