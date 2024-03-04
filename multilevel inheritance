@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Vehicle {
+protected:
+    int speed;
+    int fuel_capacity;
+
+public:
+    Vehicle(int spd, int fuel_cap) : speed(spd), fuel_capacity(fuel_cap) {}
+};
+
+class Car : public Vehicle {
+protected:
+    int num_seats;
+
+public:
+    Car(int spd, int fuel_cap, int seats) : Vehicle(spd, fuel_cap), num_seats(seats) {}
+};
+
+class Sedan : public Car {
+protected:
+    int trunk_capacity;
+
+public:
+    Sedan(int spd, int fuel_cap, int seats, int trunk_cap) : Car(spd, fuel_cap, seats), trunk_capacity(trunk_cap) {}
+};
+
+int main() {
+    Sedan sedan(120, 50, 5, 15);
+    cout << "Speed: " << sedan.speed << endl;
+    cout << "Fuel Capacity: " << sedan.fuel_capacity << endl;
+    cout << "Number of Seats: " << sedan.num_seats << endl;
+    cout << "Trunk Capacity: " << sedan.trunk_capacity << endl;
+
+    return 0;
+}
