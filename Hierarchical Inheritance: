@@ -2,38 +2,30 @@
 #include <cmath>
 using namespace std;
 
-class Rectangle {
-protected:
+class Shape {
+public:
+    double calculate_area() {
+        return 0;
+    }
+};
+
+class Rectangle : public Shape {
+public:
     double width;
     double height;
 
-public:
-    Rectangle() : width(0), height(0) {}
-
-    void input() {
-        cout << "ENTER THE WIDTH: ";
-        cin >> width;
-
-        cout << "ENTER THE HEIGHT: ";
-        cin >> height;
-    }
+    Rectangle(double w, double h) : width(w), height(h) {}
 
     double calculate_area() {
         return width * height;
     }
 };
 
-class Circle {
-protected:
+class Circle : public Shape {
+public:
     double radius;
 
-public:
-    Circle() : radius(0) {}
-
-    void input() {
-        cout << "ENTER THE RADIUS: ";
-        cin >> radius;
-    }
+    Circle(double r) : radius(r) {}
 
     double calculate_area() {
         return M_PI * radius * radius;
@@ -41,13 +33,11 @@ public:
 };
 
 int main() {
-    Rectangle react;
-    react.input();
-    cout << "Rectangle Area: " << react.calculate_area() << endl;
+    Rectangle rect(5, 4);
+    Circle circ(3);
 
-    Circle circle;
-    circle.input();
-    cout << "Circle Area: " << circle.calculate_area() << endl;
+    cout << "Area of Rectangle: " << rect.calculate_area() << endl;
+    cout << "Area of Circle: " << circ.calculate_area() << endl;
 
     return 0;
 }
