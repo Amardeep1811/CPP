@@ -3,11 +3,17 @@ using namespace std;
 
 class Account {
 protected:
-    string account_number;
+    int account_number;
     double balance;
+    double amount;
 
 public:
-    Account(string acc_num, double bal=0) : account_number(acc_num), balance(bal) {}
+    
+    void disp(){
+        cout<<"enter the balance : ";
+        cin>>balance;
+    }
+    Account(int acc_num, double bal) : account_number(acc_num), balance(bal) {}
 
     void display_balance() {
         cout << "Balance: " << balance << endl;
@@ -16,18 +22,25 @@ public:
 
 class SavingsAccount : public Account {
 public:
-    SavingsAccount(string acc_num, double bal=0) : Account(acc_num, bal) {}
-
-    void deposit(double amount) {
+    SavingsAccount(int acc_num, double bal) : Account(acc_num, bal) {}
+    
+    void disp1(){
+        cout<<"enter the amount you want to add: ";
+        cin>>amount;
+    }
+    
+    void deposit() {
         balance += amount;
     }
 };
 
 int main() {
-    SavingsAccount savings_acc("12345");
+    SavingsAccount savings_acc(1234, 0); 
+    savings_acc.disp();
     cout << "Initial Balance: ";
     savings_acc.display_balance();
-    savings_acc.deposit(100);
+    savings_acc.disp1();
+    savings_acc.deposit();
     cout << "After Deposit: ";
     savings_acc.display_balance();
 
