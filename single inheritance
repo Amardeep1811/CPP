@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class Account {
+protected:
+    string account_number;
+    double balance;
+
+public:
+    Account(string acc_num, double bal=0) : account_number(acc_num), balance(bal) {}
+
+    void display_balance() {
+        cout << "Balance: " << balance << endl;
+    }
+};
+
+class SavingsAccount : public Account {
+public:
+    SavingsAccount(string acc_num, double bal=0) : Account(acc_num, bal) {}
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+};
+
+int main() {
+    SavingsAccount savings_acc("12345");
+    cout << "Initial Balance: ";
+    savings_acc.display_balance();
+    savings_acc.deposit(100);
+    cout << "After Deposit: ";
+    savings_acc.display_balance();
+
+    return 0;
+}
