@@ -3,14 +3,25 @@ using namespace std;
 
 class Addition {
 public:
-    int add(int a, int b) {
+    int a, b;
+
+    void disp() {
+        cout << "Enter a number: ";
+        cin >> a;
+
+        cout << "Enter another number: ";
+        cin >> b;
+    }
+
+    int add() {
         return a + b;
     }
 };
 
-class Subtraction {
+class Subtraction  {
 public:
-    int subtract(int a, int b) {
+
+    int subtract(int a,int b) {
         return a - b;
     }
 };
@@ -19,9 +30,12 @@ class Calculator : public Addition, public Subtraction {
 };
 
 int main() {
-    Calculator calc;
-    cout << "Addition: " << calc.add(5, 3) << endl;
-    cout << "Subtraction: " << calc.subtract(5, 3) << endl;
+    Calculator amar;
+    amar.disp();
+    cout << "Addition: " << amar.add() << endl;
+    
+    int result = amar.subtract(amar.a,amar.b);
+    cout << "Subtraction: " << result << endl;
 
     return 0;
 }
