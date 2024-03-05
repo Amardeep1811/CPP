@@ -10,14 +10,26 @@ protected:
 public:
     
     void disp(){
-        cout<<"enter the balance : ";
+        cout<<"enter the account number : ";
+        cin>>account_number;
+        
+        cout<<"\nenter the balance : ";
         cin>>balance;
+        
+        cout<<"the account number is : "<<account_number<<endl;
     }
+    
+    
+    
     Account(int acc_num, double bal) : account_number(acc_num), balance(bal) {}
 
     void display_balance() {
         cout << "Balance: " << balance << endl;
     }
+    
+
+    
+
 };
 
 class SavingsAccount : public Account {
@@ -35,9 +47,10 @@ public:
 };
 
 int main() {
-    SavingsAccount savings_acc(1234, 0); 
+    SavingsAccount savings_acc(0, 0); 
+    //  savings_acc.display_balance1;
     savings_acc.disp();
-    cout << "Initial Balance: ";
+    // cout << "Initial Balance: ";
     savings_acc.display_balance();
     savings_acc.disp1();
     savings_acc.deposit();
