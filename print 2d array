@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main() {
+  int marks[3][3];
+  int i,j;
+  
+  for(i=0;i<3;i++){
+      cout << "ENTER THE " << i+1 <<" ROW ELEMENTS" <<endl;
+            for(j=0;j<3;j++){
+                cin >> marks[i][j];
+            }
+  }
+  
+  for(i=0;i<3;i++){
+            for(j=0;j<3;j++){
+                cout << marks[i][j] << "\t";
+            }
+           cout << "\n";
+  }
