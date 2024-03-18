@@ -1,0 +1,60 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class employee {
+    public:
+    int eid;
+    char name[100];
+    float salary,HRA,DA,TA,commision,leaves,leavesMoney,totalSalary;
+    
+    void details(){
+        cout << "\nenter the employee number : " ;
+        cin>>eid;
+        
+         cout << "\nenter the employee name : " ;
+         cin>>name;
+        
+        cout << "\nenter the base salary : " ;
+        cin>>salary;
+        
+        cout << "\nenter the leaves taken : ";
+        cin>>leaves;
+        
+        HRA = 5000;
+        DA = 0.20*salary;
+        TA = 0.12*salary;
+        commision = 0.10*salary;
+        
+        leavesMoney = leaves*(salary/30);
+        
+        totalSalary = salary+HRA+DA+commision-(TA+leavesMoney);
+        
+        
+    }
+    
+    
+    void display(){
+        cout<<endl;
+        cout<< "-----------------------------------" <<endl;
+        cout << "\nenter the employee name : "<<name ;
+        cout<<"THE EMPLOYEE NUMBER IS  : "<<eid <<endl;
+        cout<<"the base salary is : "<<salary <<endl;
+        cout<<"THE HRA IS  : "<<HRA <<endl;
+        cout<<"THE DA IS  : "<<DA <<endl;
+        cout<<"THE TA IS  : "<<TA <<endl;
+        cout<<"THE COMMISION IS  : "<<commision <<endl;
+        cout<<"THE LEAVE MONEY DEDUCTED IS  : "<<leavesMoney <<endl;
+        cout<<"THE TOTAL SALARY IS  : "<<totalSalary <<endl;
+        
+    }
+    
+    
+};
+
+
+int main(){
+    employee e;
+    e.details();
+    e.display();
+}
