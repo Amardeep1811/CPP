@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  float a,b,c,d,e,t;
+  cout << "enter your maths results : " << endl;
+  cin >> a;
+  cout << "enter your maths results : " << endl;
+  cin >> b;
+  cout << "enter your maths results : " << endl;
+  cin >> c;
+  cout << "enter your maths results : " << endl;
+  cin >> d;
+  cout << "enter your maths results : " << endl;
+  cin >> e;
+  
+  t=(a+b+c+d+e)/5;
+    cout << "your result is  : " << t <<  endl;
+    if(t>=60.00){
+         cout << "your result is first division"<< endl;
+    }
+    else if(t<60.00 && t >40.00){
+         cout << "your result is second division"<< endl;
+    }
+    else if(t<40.00 && t >30.00){
+         cout << "your result is third division"<< endl;
+    }
+    else if(t<30){
+         cout << "your result is fail"<< endl;
+    }
+}
