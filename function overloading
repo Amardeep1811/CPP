@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int fun(int x){ 
+    return x*x*x;
+};
+
+float fun(float y){ 
+    return y*y*y;
+};
+
+int main() {
+
+int a = 5; float b = 5.5;
+
+cout<< "Cube of integer number " << a << " is " << fun(a) <<endl;
+cout<< "Cube of float number " << b << " is " << fun(b) <<endl;
+
+return 0;
+
+}
