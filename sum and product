@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int i,a,d,e=1;
+    int marks[5];
+    for(i=0;i<5;i++)
+    {
+        cout <<"\n" <<"ENTER THE MARKS FOR " << i+1 << " ELEMENT : ";
+        cin >> marks[i];
+        d += marks[i];
+        e *= marks[i];
+    }
+    cout << "the sum is : " << d << endl;
+     cout << "the product is : " << e << endl;
+    return 0;
+}
