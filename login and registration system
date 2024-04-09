@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string username;
+string password;
+
+void registerUser() {
+    cout << "Enter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
+    cout << "Registration successful!" << endl;
+}
+
+bool loginUser() {
+    string inputUsername, inputPassword;
+    cout << "Enter username: ";
+    cin >> inputUsername;
+    cout << "Enter password: ";
+    cin >> inputPassword;
+
+    if (inputUsername == username && inputPassword == password) {
+        cout << "Login successful! Welcome, " << username << "!" << endl;
+        return true;
+    } else {
+        cout << "Invalid username or password." << endl;
+        return false;
+    }
+}
+
+int main() {
+    cout << "WELCOME TO SIMPLE LOGIN SYSTEM CCREATED BY AMARDEEP..........."<<endl;
+
+    int choice;
+    do {
+        cout << "\n1. Register\n2. Login\n";
+        cout << "Select an option: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                registerUser();
+                break;
+            case 2:
+                loginUser();
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice == 1 || choice == 2);
+
+    return 0;
+}
