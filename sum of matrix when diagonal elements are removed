@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int s = 4;
+    int i, j, reverseDiagonal, diagonal, sum=0;
+    int arry[s][s];
+    
+    cout << "Enter the elements of the matrix \n";
+    for(i = 0; i<s ; i++){
+        for(j = 0; j<s ; j++){
+        cout << "Enter the element at row " << i + 1 << " column " << j + 1 << " ";
+        cin>>arry[i][j];
+        sum += arry[i][j];
+        }
+    }
+    
+    cout<<"Reverse diagonal elements are :- \n";
+    for(i = 0, j = s-1; i < s && j >= 0; i++, j--) {
+      cout<< arry[i][j]<<endl;
+      reverseDiagonal += arry[i][j];
+    }
+    
+    
+    cout<<"Diagonal elements are :- \n";
+     for(i = 0; i<s ; i++){
+        for(j = 0; j<s ; j++){
+        if(i==j){
+            cout << arry[i][j]<<endl;
+            diagonal += arry[i][j];
+        }
+        }
+    }
+    
+    cout<<"the sum is :- " << sum << endl;
+    cout<<"the diagonal sum is :- " << diagonal << endl;
+    cout<<"the reverse diagonal sum is :- " << reverseDiagonal << endl;
+    cout<<"the sum when diagonal elements are removed is :- " << sum-(diagonal+reverseDiagonal) << endl;
+
+    return 0;
+}
