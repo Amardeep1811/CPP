@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int SIZE, int target) {
+    for (int i = 0; i < SIZE; i++) {
+        if (target == arr[i]) {
+            return i;
+        }
+    }
+    return -1; // Return -1 if the target is not found after completing the loop
+}
+
+int main() {
+    int size = 8;
+    int arry[size];
+    int key;
+
+    for (int i = 0; i < size; i++) {
+        cout << "Enter the " << i + 1 << " element: ";
+        cin >> arry[i];
+    }
+
+    cout << "Enter the element you want to find: ";
+    cin >> key;
+
+    int index = linearSearch(arry, size, key);
+
+    if (index != -1) {
+        cout << "The element is found at position: " << index;
+    } else {
+        cout << "The element is not in the array.";
+    }
+
+    return 0;
+}
