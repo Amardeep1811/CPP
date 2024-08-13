@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+  int size = 8;
+  int arry[size];
+  int key;
+  int index;
+
+  for (int i = 0 ; i < size ; i++){
+    cout << "Enter the " << i+1 << " element : ";
+    cin >> arry[i];
+  }
+
+  cout << "Enter the element you want to find ";
+  cin >> key;
+
+  
+  for (int i = 0 ; i < size ; i++){
+    if (key == arry[i]){
+      index = i;
+    }
+  }
+    cout << "element is present at : " << index;
+  
+}
