@@ -1,0 +1,81 @@
+
+#include <iostream>
+using namespace std;
+
+class Employee {
+public:
+    virtual double calculatepay() const = 0;
+    string name;
+    int empId;
+};
+
+class Salaried : public Employee {
+public:
+    int days;
+    int leaves;
+    int leavesMoney;
+    int dep;
+    int wages;
+
+    Salaried() : days(0), leaves(0), leavesMoney(0), dep(0), wages(0) {}
+
+    int calculateWage() {
+        cout << "Select your department:\n";
+        cout << "1. Developers\n2. H.R\n3. Accounts\n4. Marketing\n";
+        cin >> dep;
+
+        switch (dep) {
+            case 1: return 5000;
+            case 2: return 6000;
+            case 3: return 4000;
+            case 4: return 7000;
+            default:
+                cout << "Invalid department. Setting default wage to 0.\n";
+                return 0;
+        }
+    }
+
+    int calculateLeaves() {
+        if (leaves <= 5) {
+            return 0;
+        } else {
+            return leaves * (wages/2);
+        }
+    }
+
+    double calculatepay() const override {
+        return (days * wages) - leavesMoney;
+    }
+
+    void inputData() {
+        cout << "Enter employee name: ";
+        cin >> name;
+        cout << "Enter employee ID: ";
+        cin >> empId;
+        cout << "Enter number of days worked: ";
+        cin >> days;
+        wages = calculateWage();
+
+        cout << "Enter number of leaves: ";
+        cin >> leaves;
+        leavesMoney = calculateLeaves();
+    }
+
+    void displaySalaryDetails() const {
+        cout << "\n--- Salary Details ---\n";
+        cout << "Name: " << name << endl;
+        cout << "Employee ID: " << empId << endl;
+        cout << "Wage per day: " << wages << endl;
+        cout << "Total days worked: " << days << endl;
+        cout << "Leave deduction: " << leavesMoney << endl;
+        cout << "Total Pay: " << calculatepay() << endl;
+    }
+};
+
+int main() {
+    Salaried s;
+    s.inputData();
+    s.displaySalaryDetails();
+
+    return 0;
+}
