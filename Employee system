@@ -1,81 +1,141 @@
-
 #include <iostream>
 using namespace std;
 
 class Employee {
 public:
-    virtual double calculatepay() const = 0;
-    string name;
-    int empId;
+    virtual double calculatepay() const = 0;
+    virtual double calculateWage() = 0;
+    virtual void inputData() = 0;
+    virtual void displaySalaryDetails() const = 0;
+    string name;
 };
 
 class Salaried : public Employee {
 public:
-    int days;
-    int leaves;
-    int leavesMoney;
-    int dep;
-    int wages;
+    int days;
+    int leaves;
+    int leavesMoney;
+    int dep;
+    int wages;
 
-    Salaried() : days(0), leaves(0), leavesMoney(0), dep(0), wages(0) {}
+    Salaried() : days(0), leaves(0), leavesMoney(0), dep(0), wages(0) {}
 
-    int calculateWage() {
-        cout << "Select your department:\n";
-        cout << "1. Developers\n2. H.R\n3. Accounts\n4. Marketing\n";
-        cin >> dep;
+    double calculateWage() override {
+        cout << "Select your department:\n";
+        cout << "1. Developers\n2. H.R\n3. Accounts\n4. Marketing\n";
+        cin >> dep;
 
-        switch (dep) {
-            case 1: return 5000;
-            case 2: return 6000;
-            case 3: return 4000;
-            case 4: return 7000;
-            default:
-                cout << "Invalid department. Setting default wage to 0.\n";
-                return 0;
-        }
-    }
+        switch (dep) {
+            case 1: return 5000;
+            case 2: return 6000;
+            case 3: return 4000;
+            case 4: return 7000;
+            default:
+                cout << "Invalid department. Setting default wage to 0.\n";
+                return 0;
+        }
+    }
 
-    int calculateLeaves() {
-        if (leaves <= 5) {
-            return 0;
-        } else {
-            return leaves * (wages/2);
-        }
-    }
+    int calculateLeaves() {
+        if (leaves <= 5) {
+            return 0;
+        } else {
+            return (leaves - 5) * (wages / 2);
+        }
+    }
 
-    double calculatepay() const override {
-        return (days * wages) - leavesMoney;
-    }
+    double calculatepay() const override {
+        return (days * wages) - leavesMoney;
+    }
 
-    void inputData() {
-        cout << "Enter employee name: ";
-        cin >> name;
-        cout << "Enter employee ID: ";
-        cin >> empId;
-        cout << "Enter number of days worked: ";
-        cin >> days;
-        wages = calculateWage();
+    void inputData() override {
+        cout << "Enter employee name: ";
+        cin >> name;
+        cout << "Enter number of days worked: ";
+        cin >> days;
+        wages = calculateWage();
 
-        cout << "Enter number of leaves: ";
-        cin >> leaves;
-        leavesMoney = calculateLeaves();
-    }
+        cout << "Enter number of leaves: ";
+        cin >> leaves;
+        leavesMoney = calculateLeaves();
+    }
 
-    void displaySalaryDetails() const {
-        cout << "\n--- Salary Details ---\n";
-        cout << "Name: " << name << endl;
-        cout << "Employee ID: " << empId << endl;
-        cout << "Wage per day: " << wages << endl;
-        cout << "Total days worked: " << days << endl;
-        cout << "Leave deduction: " << leavesMoney << endl;
-        cout << "Total Pay: " << calculatepay() << endl;
-    }
+    void displaySalaryDetails() const override {
+        cout << "\n--- Salary Details ---\n";
+        cout << "Name: " << name << endl;
+        cout << "Wage per day: " << wages << endl;
+        cout << "Total days worked: " << days << endl;
+        cout << "Leave deduction: " << leavesMoney << endl;
+        cout << "Total Pay: " << calculatepay() << endl;
+    }
+};
+
+
+class Hourly : public Employee {
+  public :
+  int hours;
+  int hrWages;
+  int dep;
+
+  Hourly() : hours(0) , hrWages(0) , dep(0) {};
+
+  double calculateWage() override {
+    cout << "Select your department:\n";
+    cout << "1. Developers\n2. H.R\n3. Accounts\n4. Marketing\n";
+    cin >> dep;
+
+    switch (dep){
+      case 1 : return 625;
+      case 2 : return 459;
+      case 3 : return 448;
+      case 4 : return 700;
+      default : cout << "Enter a valid option : ";
+      return 0;
+    }
+  }
+
+  void inputData() override {
+        cout << "Enter employee name: ";
+        cin >> name;
+        cout << "Enter number of hours worked: ";
+        cin >> hours;
+        hrWages = calculateWage();
+    }
+  
+  double calculatepay() const override {
+        return hrWages * hours;
+    }
+
+     void displaySalaryDetails() const override {
+        cout << "\n--- Salary Details ---\n";
+        cout << "Name: " << name << endl;
+        cout << "Wage per hour: " << hrWages << endl;
+        cout << "Total hours worked: " << hours << endl;
+        cout << "Total Pay: " << calculatepay() << endl;
+    }
+
 };
 
 int main() {
-    Salaried s;
-    s.inputData();
-    s.displaySalaryDetails();
+    int empId;
 
-    return 0;
+    cout << "Enter your Employee Id (between 1000 - 2000) : ";
+    cin >> empId;
+
+    Employee * emp;
+
+
+    if (empId > 1000 && empId <= 1500){
+      emp = new Salaried();
+    }else if(empId > 1500 && empId <= 2000){
+      emp = new Hourly();
+    }else{
+      cout << "Invaild id ";
+      return 1;
+    }
+
+    emp->inputData();
+    emp->displaySalaryDetails();
+
+    return 0;
 }
