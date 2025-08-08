@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class Pair {
+private:
+    T first;
+    T second;
+
+public:
+    Pair() {}
+
+    Pair(T first, T second) : first(first), second(second) {}
+
+    void setFirst(T value) {
+        first = value;
+    }
+
+    void setSecond(T value) {
+        second = value;
+    }
+
+    T getFirst() const {
+        return first;
+    }
+
+    T getSecond() const {
+        return second;
+    }
+};
+
+int main() {
+    Pair<int> intPair(10, 20);
+    Pair<double> doublePair(3.14, 6.28);
+    Pair<string> stringPair("Hello", "World");
+
+    cout << "Integer Pair: " << intPair.getFirst() << ", " << intPair.getSecond() << endl;
+    cout << "Double Pair: " << doublePair.getFirst() << ", " << doublePair.getSecond() << endl;
+    cout << "String Pair: " << stringPair.getFirst() << ", " << stringPair.getSecond() << endl;
+
+    return 0;
+}

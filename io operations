@@ -1,0 +1,17 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main(){
+    string st,st2;
+    st2 ="this is the output file";
+    
+    ifstream in("input.txt");
+    getline (in, st);
+    
+    cout<<st;
+    
+    
+    ofstream out("output.txt");
+    out<<st2;
+}
